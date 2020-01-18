@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "E:\\JavaScript Practice"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JavaScript Practice",
+		"liveServer.settings.port": 5501
+	}
+}
