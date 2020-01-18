@@ -1,0 +1,2 @@
+# JavaScriptPractice
+Sample Practice Repository
