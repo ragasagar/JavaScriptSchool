@@ -104,6 +104,25 @@ class FirstLinkedList {
 
     }
 }
+function reverse(root){
+    if(!root || !root.next){
+        return root;
+    }
+    else{
+    let remaining = reverse(root.next)
+    root.next.next = root 
+    root.next = null
+    return remaining
+    }
+}
+
+    function print(root){
+        let temp = root;
+        while(temp){
+            console.log(temp.data);
+            temp = temp.next;
+        }
+    }
 
 linkedlist = new FirstLinkedList(2);
 linkedlist.append(8);
@@ -116,6 +135,9 @@ linkedlist.prepend(9090);
 linkedlist.deleteNode(4);
 linkedlist.print();
 console.log(linkedlist);
+list = reverse(linkedlist.head);
+console.log(list)
+print(list);
 
 /**
  * Output:
