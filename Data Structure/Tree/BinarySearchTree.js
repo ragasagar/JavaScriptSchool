@@ -55,6 +55,55 @@ class BinarySearchTree{
         }
     }
 
+    delete(value){
+        this.deleteNode(this.root, value);
+    }
+
+    deleteNode(root, value){
+        if(root === null){
+            return root;
+        }
+        else{
+            if(value < root.data){
+                root.left = this.deleteNode(root.left, value);
+            }
+            else if(value > root.data){
+                root.right = this.deleteNode(root.right, value);
+            }
+            else{
+                // console.log(root.data);
+                // if the left child is null, copy the right child and paste it in root node.
+                if(root.left === null){
+                    let temp = root.right;
+                    root = null;
+                    return temp;
+                }
+                // if the right child is null, copy the left child and paste it in root node.
+                else if (root.right === null){
+                    let temp = root.left;
+                    root = null;
+                    return temp;
+                }
+            
+                //if the node has both child , find the min node from the right node.
+                let temp = this.minNode(root.right);
+                root.data = temp;
+                root.right = this.deleteNode(root.right, temp);
+
+            }
+        }
+        return root;
+    }
+
+    minNode(root){
+        // console.log(root.data);
+        let temp = root;
+        while(temp.left != null){
+            temp = temp.left;
+        }
+        return temp.data;
+    }
+
 }
 function traverse(root){
     if(root){
@@ -75,6 +124,8 @@ bst.insert(10);
 bst.insert(11);
 console.log(bst.lookup(5));
 console.log(bst.lookup(90));
+bst.delete(9);
+bst.delete(4);
 traverse(bst.root);
 
 /**
@@ -84,9 +135,7 @@ undefined
 1
 2
 3
-4
 5
-9
 10
 11
  */
